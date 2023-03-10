@@ -1,28 +1,23 @@
 package hiber.model;
 
+
 import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
 
-
 @Entity
-@Table
+@Table(name = "cars")
 public class Car {
 
-
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column (name = "id")
-    private int id;
-    @Column (name = "model")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "model" )
     private String model;
     @Column(name = "series")
     private int series;
-
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
 
     public Car() {
     }
@@ -33,11 +28,11 @@ public class Car {
     }
 
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -58,4 +53,12 @@ public class Car {
     }
 
 
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", model='" + model + '\'' +
+                ", series=" + series +
+                '}';
+    }
 }
